@@ -25,6 +25,9 @@ public class BuiltInSensorsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_built_in_sensors);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mListView = (ListView) findViewById(R.id.listView);
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);

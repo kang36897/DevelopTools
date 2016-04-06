@@ -12,6 +12,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.curious.tiger.R;
+
 public class ListShowCaseActivity extends BaseActivity {
 
     private ListView mListView;

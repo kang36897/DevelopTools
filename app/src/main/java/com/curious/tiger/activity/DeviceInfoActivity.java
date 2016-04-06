@@ -10,6 +10,7 @@ import com.curious.tiger.R;
 
 import java.util.ArrayList;
 
+
 public class DeviceInfoActivity extends BaseActivity {
 
     private ListView mListView;
@@ -19,6 +20,8 @@ public class DeviceInfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_info);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mListView = (ListView) findViewById(R.id.listView);
 
         StringBuilder sb = new StringBuilder();

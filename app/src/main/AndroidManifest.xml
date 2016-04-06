@@ -20,11 +20,19 @@
 
         <activity
             android:name=".activity.DeviceInfoActivity"
-            android:label="@string/case_Device_info"/>
+            android:label="@string/case_Device_info">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListShowCaseActivity"/>
+        </activity>
 
         <activity
             android:name=".activity.BuiltInSensorsActivity"
-            android:label="@string/case_built_in_sensors"/>
+            android:label="@string/case_built_in_sensors">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListShowCaseActivity"/>
+        </activity>
 
 
     </application>
