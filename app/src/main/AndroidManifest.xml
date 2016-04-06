@@ -10,14 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.DeviceInfoActivity"
+            android:name=".activity.ListShowCaseActivity"
             android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
+
+        <activity
+            android:name=".activity.DeviceInfoActivity"
+            android:label="@string/case_Device_info"/>
+
+        <activity
+            android:name=".activity.BuiltInSensorsActivity"
+            android:label="@string/case_built_in_sensors"/>
+
 
     </application>
 

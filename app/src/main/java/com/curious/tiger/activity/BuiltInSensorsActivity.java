@@ -7,22 +7,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.curious.tiger.R;
 
 import java.util.List;
 
-public class BuiltInSensorsActivity extends ListActivity {
+public class BuiltInSensorsActivity extends BaseActivity {
 
     private SensorManager mSensorManager;
     private List<Sensor> mData;
 
+    private ListView mListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_built_in_sensors);
+        mListView = (ListView) findViewById(R.id.listView);
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         SensorDetailAdapter adapter = new SensorDetailAdapter();
-        setListAdapter(adapter);
+        mListView.setAdapter(adapter);
 
         mData = mSensorManager.getSensorList(Sensor.TYPE_ALL);
         adapter.notifyDataSetChanged();

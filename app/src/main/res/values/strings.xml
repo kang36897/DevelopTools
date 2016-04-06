@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DevelopTools</string>
+    <string name="case_Device_info">Device Infomation</string>
+    <string name="case_built_in_sensors">Built-in Sensors</string>
 </resources>
