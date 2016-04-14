@@ -1,12 +1,14 @@
 package com.curious.tiger.activity;
 
 import android.app.ActivityManager;
+import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.curious.tiger.R;
+import com.curious.tiger.device.CameraOnDevice;
 
 import java.util.ArrayList;
 
@@ -57,6 +59,27 @@ public class DeviceInfoActivity extends BaseActivity {
             mData.add(sb.toString());
             sb.delete(0, sb.length());
         }
+
+        sb.append("Available-camera-number:").append(CameraOnDevice.AVAILABLE_CAMERA_NUMS);
+        mData.add(sb.toString());
+        sb.delete(0, sb.length());
+
+        sb.append("Back-camera-orientation:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].orientation);
+        mData.add(sb.toString());
+        sb.delete(0, sb.length());
+
+        sb.append("Back-camera-canDisableShutterSound:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].canDisableShutterSound);
+        mData.add(sb.toString());
+        sb.delete(0, sb.length());
+
+        sb.append("Front-camera-orientation:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].orientation);
+        mData.add(sb.toString());
+        sb.delete(0, sb.length());
+
+        sb.append("Front-camera-canDisableShutterSound:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].canDisableShutterSound);
+        mData.add(sb.toString());
+        sb.delete(0, sb.length());
+
         mListView.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, mData));
 
     }
