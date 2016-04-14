@@ -1,7 +1,6 @@
 package com.curious.tiger.activity;
 
 import android.app.ActivityManager;
-import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -50,33 +49,40 @@ public class DeviceInfoActivity extends BaseActivity {
         sb.delete(0, sb.length());
 
         ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        sb.append("Application-limit-heap-size:").append(activityManager.getMemoryClass()).append("m");
+        sb.append("Application-limit-heap-size:")
+                .append(activityManager.getMemoryClass()).append("m");
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            sb.append("Application-limit-large-heap-size:").append(activityManager.getLargeMemoryClass()).append("m");
+            sb.append("Application-limit-large-heap-size:")
+                    .append(activityManager.getLargeMemoryClass()).append("m");
             mData.add(sb.toString());
             sb.delete(0, sb.length());
         }
 
-        sb.append("Available-camera-number:").append(CameraOnDevice.AVAILABLE_CAMERA_NUMS);
+        sb.append("Available-camera-number:")
+                .append(CameraOnDevice.AVAILABLE_CAMERA_NUMS);
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
-        sb.append("Back-camera-orientation:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].orientation);
+        sb.append("Back-camera-orientation:")
+                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].orientation);
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
-        sb.append("Back-camera-canDisableShutterSound:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].canDisableShutterSound);
+        sb.append("Back-camera-canDisableShutterSound:")
+                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].canDisableShutterSound);
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
-        sb.append("Front-camera-orientation:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].orientation);
+        sb.append("Front-camera-orientation:")
+                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].orientation);
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
-        sb.append("Front-camera-canDisableShutterSound:").append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].canDisableShutterSound);
+        sb.append("Front-camera-canDisableShutterSound:")
+                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].canDisableShutterSound);
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
