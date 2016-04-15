@@ -2,6 +2,8 @@
     package="com.curious.tiger"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name="com.curious.support.app.ChargeApplication"
         android:allowBackup="true"
@@ -33,7 +35,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.ListShowCaseActivity"/>
         </activity>
-
+        <activity
+            android:name=".activity.ScreenCaptureActivity"
+            android:label="@string/case_screen_capture">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListShowCaseActivity" />
+        </activity>
 
     </application>
 
