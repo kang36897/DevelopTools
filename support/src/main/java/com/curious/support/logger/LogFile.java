@@ -35,7 +35,7 @@ public class LogFile implements LogNode {
     }
 
     private File DEFAULT_LOG;
-
+    private final static String DEFAULT_FOLDER = "Curious";
 
     public LogFile() {
         DEFAULT_LOG = getOutputLogFile(null);
@@ -111,7 +111,7 @@ public class LogFile implements LogNode {
             logStorageDir = context.getExternalFilesDir(null);
         } else {
             logStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOCUMENTS), "Express");
+                    Environment.DIRECTORY_DOCUMENTS), DEFAULT_FOLDER);
 
             // Create the storage directory if it does not exist
             if (!logStorageDir.exists()) {
