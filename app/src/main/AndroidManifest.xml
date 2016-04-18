@@ -43,6 +43,13 @@
                 android:value=".activity.ListShowCaseActivity" />
         </activity>
 
+        <activity
+            android:name=".activity.NativeCommandActivity"
+            android:label="@string/case_native_commands">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListShowCaseActivity" />
+        </activity>
     </application>
 
 </manifest>

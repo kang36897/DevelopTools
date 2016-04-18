@@ -207,7 +207,7 @@ public class ImageUtils {
 
         Process process = null;
         try {
-            process = Runtime.getRuntime().exec("/system/bin/screencap /sdcard/my.png");
+            process = Runtime.getRuntime().exec("/system/bin/ls /sdcard");
 
             InputStream inputStream = process.getInputStream();
             saveImage(inputStream, imgFile);

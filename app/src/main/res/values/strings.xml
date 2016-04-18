@@ -4,4 +4,6 @@
     <string name="case_built_in_sensors">Built-in Sensors</string>
     <string name="case_screen_capture">Screen Capture</string>
     <string name="action_capture">Capture it</string>
+    <string name="action_run">Run</string>
+    <string name="case_native_commands">Native Command</string>
 </resources>
