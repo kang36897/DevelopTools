@@ -207,7 +207,7 @@ public class ImageUtils {
 
         Process process = null;
         try {
-            process = Runtime.getRuntime().exec("/system/bin/ls /sdcard");
+            process = Runtime.getRuntime().exec("/system/bin/screencap -p " + imgFile.getAbsolutePath());
 
             InputStream inputStream = process.getInputStream();
             saveImage(inputStream, imgFile);
@@ -269,12 +269,14 @@ public class ImageUtils {
         int count = 0;
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         try {
+
             while ((count = errorStream.read(buff)) != -1) {
                 arrayOutputStream.write(buff, 0, count);
             }
             arrayOutputStream.flush();
+            if (arrayOutputStream.toByteArray().length > 0)
+                Log.d(TAG, arrayOutputStream.toString());
             arrayOutputStream.close();
-            Log.d(TAG, arrayOutputStream.toString());
         } catch (IOException e) {
             Log.e(TAG, "logError()->", e);
         } finally {
