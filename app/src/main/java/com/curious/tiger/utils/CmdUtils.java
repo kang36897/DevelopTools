@@ -2,6 +2,7 @@ package com.curious.tiger.utils;
 
 import com.curious.support.logger.Log;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +19,7 @@ public class CmdUtils {
         Process mProcess = null;
         try {
             mProcess = Runtime.getRuntime().exec(command);
-            InputStreamReader reader = new InputStreamReader(mProcess.getInputStream());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(mProcess.getInputStream()));
             StringBuilder outBuffer = new StringBuilder();
 
             int count;

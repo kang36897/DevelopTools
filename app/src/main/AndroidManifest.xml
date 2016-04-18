@@ -1,8 +1,8 @@
-<manifest
-    package="com.curious.tiger"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.curious.tiger">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.curious.support.app.ChargeApplication"
@@ -15,8 +15,8 @@
             android:name=".activity.ListShowCaseActivity"
             android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -25,7 +25,7 @@
             android:label="@string/case_Device_info">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ListShowCaseActivity"/>
+                android:value=".activity.ListShowCaseActivity" />
         </activity>
 
         <activity
@@ -33,14 +33,14 @@
             android:label="@string/case_built_in_sensors">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ListShowCaseActivity"/>
+                android:value=".activity.ListShowCaseActivity" />
         </activity>
         <activity
             android:name=".activity.ScreenCaptureActivity"
             android:label="@string/case_screen_capture">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ListShowCaseActivity"/>
+                android:value=".activity.ListShowCaseActivity" />
         </activity>
 
         <activity
