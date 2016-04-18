@@ -6,4 +6,5 @@
     <string name="action_capture">Capture it</string>
     <string name="action_run">Run</string>
     <string name="case_native_commands">Native Command</string>
+    <string name="hint_command">/system/bin/ls</string>
 </resources>

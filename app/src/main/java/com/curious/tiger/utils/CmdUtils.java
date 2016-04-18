@@ -2,7 +2,9 @@ package com.curious.tiger.utils;
 
 import com.curious.support.logger.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
@@ -11,6 +13,7 @@ import java.io.InputStreamReader;
 public class CmdUtils {
     final static String TAG = "CmdUtils";
 
+    // Executes UNIX command.
     public static String exec(final String command) {
         Process mProcess = null;
         try {
@@ -20,7 +23,7 @@ public class CmdUtils {
 
             int count;
             char[] buff = new char[1024];
-            while ((count = reader.read(buff)) != -1) {
+            while ((count = reader.read(buff)) > 0) {
                 outBuffer.append(buff, 0, count);
             }
 
@@ -42,4 +45,30 @@ public class CmdUtils {
         return "";
     }
 
+
+    public synchronized static void logError(InputStream errorStream) {
+        byte[] buff = new byte[512];
+        int count = 0;
+        ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+        try {
+
+            while ((count = errorStream.read(buff)) != -1) {
+                arrayOutputStream.write(buff, 0, count);
+            }
+            arrayOutputStream.flush();
+            if (arrayOutputStream.toByteArray().length > 0)
+                Log.d(TAG, arrayOutputStream.toString());
+            arrayOutputStream.close();
+        } catch (IOException e) {
+            Log.e(TAG, "logError()->", e);
+        } finally {
+            if (errorStream != null) {
+                try {
+                    errorStream.close();
+                } catch (IOException e) {
+                    Log.e(TAG, "logError()->", e);
+                }
+            }
+        }
+    }
 }

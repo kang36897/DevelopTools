@@ -13,6 +13,7 @@
         <EditText
             android:id="@+id/command_line"
             android:layout_width="0dp"
+            android:text="@string/hint_command"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 

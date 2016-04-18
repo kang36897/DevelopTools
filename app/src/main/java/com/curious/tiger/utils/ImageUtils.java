@@ -9,7 +9,6 @@ import android.media.ExifInterface;
 import com.curious.support.logger.Log;
 import com.curious.tiger.data.MImage;
 
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -217,7 +216,7 @@ public class ImageUtils {
             new Thread() {
                 @Override
                 public void run() {
-                    logError(errorStream);
+                    CmdUtils.logError(errorStream);
                 }
             }.start();
 
@@ -264,29 +263,5 @@ public class ImageUtils {
         }
     }
 
-    public synchronized static void logError(InputStream errorStream) {
-        byte[] buff = new byte[512];
-        int count = 0;
-        ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
-        try {
 
-            while ((count = errorStream.read(buff)) != -1) {
-                arrayOutputStream.write(buff, 0, count);
-            }
-            arrayOutputStream.flush();
-            if (arrayOutputStream.toByteArray().length > 0)
-                Log.d(TAG, arrayOutputStream.toString());
-            arrayOutputStream.close();
-        } catch (IOException e) {
-            Log.e(TAG, "logError()->", e);
-        } finally {
-            if (errorStream != null) {
-                try {
-                    errorStream.close();
-                } catch (IOException e) {
-                    Log.e(TAG, "logError()->", e);
-                }
-            }
-        }
-    }
 }
