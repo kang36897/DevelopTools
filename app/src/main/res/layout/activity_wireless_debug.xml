@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#000"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ip_board"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:textColor="@color/highlightGreen"
+        android:text="@string/current_ip"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:layout_height="wrap_content" />
+</LinearLayout>

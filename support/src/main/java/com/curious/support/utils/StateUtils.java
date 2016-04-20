@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.curious.support.data.NetworkState;
+
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -21,30 +23,59 @@ public class StateUtils {
         return mActiveNetwork.isConnectedOrConnecting();
     }
 
-    public static String getIpAddress(boolean needIpv4) {
-        Enumeration<NetworkInterface> interfaces = null;
-        try {
-            interfaces = NetworkInterface.getNetworkInterfaces();
-            while (interfaces.hasMoreElements()) {
-                NetworkInterface face = interfaces.nextElement();
-                Enumeration<InetAddress> addresses = face.getInetAddresses();
+    public static boolean isInternetAccessible(Context context) {
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mActiveNetwork = manager.getActiveNetworkInfo();
 
-                while (addresses.hasMoreElements()) {
-                    InetAddress address = addresses.nextElement();
-                    if (!address.isLoopbackAddress()) {
-                        if (address instanceof Inet4Address) {
-                            if (needIpv4)
-                                return address.getHostAddress();
-                            else {
-                                continue;
+        return mActiveNetwork != null && mActiveNetwork.isConnected();
+    }
+
+
+    public static NetworkState updateNetworkState(Context context) {
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo mActiveNetwork = manager.getActiveNetworkInfo();
+        NetworkState state = new NetworkState();
+        if (mActiveNetwork == null) {
+            state.mIsMobileConnected = false;
+            state.mIsWifiConnected = false;
+        } else {
+            state.mIsMobileConnected = mActiveNetwork.isConnected()
+                    && mActiveNetwork.getType() == ConnectivityManager.TYPE_MOBILE;
+            state.mIsWifiConnected = mActiveNetwork.isConnected()
+                    && mActiveNetwork.getType() == ConnectivityManager.TYPE_WIFI;
+
+        }
+        return state;
+    }
+
+
+    public static String getDeviceIP(boolean needIPv4) {
+        try {
+            Enumeration<NetworkInterface> availableInterface = NetworkInterface.getNetworkInterfaces();
+            while (availableInterface.hasMoreElements()) {
+                NetworkInterface currentInterface = availableInterface.nextElement();
+
+                Enumeration<InetAddress> availableAddresses = currentInterface.getInetAddresses();
+
+                while (availableAddresses.hasMoreElements()) {
+                    InetAddress inetAddress = availableAddresses.nextElement();
+
+                    if (!inetAddress.isLoopbackAddress()) {
+
+                        String hostAddress = inetAddress.getHostAddress();
+                        boolean isIPv4 = inetAddress instanceof Inet4Address;
+
+                        if (isIPv4) {
+                            if (needIPv4) {
+                                return hostAddress;
                             }
                         } else {
-
-                            if (needIpv4) {
-                                continue;
-                            } else {
-                                return address.getHostAddress();
+                            if (!needIPv4) {
+                                int delim = hostAddress.indexOf('%'); // drop ip6 zone suffix
+                                return delim < 0 ? hostAddress.toUpperCase() : hostAddress.substring(0, delim).toUpperCase();
                             }
+
 
                         }
 
@@ -53,8 +84,9 @@ public class StateUtils {
 
                 }
 
-
             }
+
+
         } catch (SocketException e) {
             e.printStackTrace();
         }
