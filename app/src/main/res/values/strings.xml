@@ -9,4 +9,5 @@
     <string name="hint_command">/system/bin/ls</string>
     <string name="current_ip">Current IP : %1$s</string>
     <string name="case_wireless_debug">Wireless Debug</string>
+    <string name="case_permission_on_device">Permission On Device</string>
 </resources>

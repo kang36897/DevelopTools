@@ -69,27 +69,81 @@ public class PermissionLoader extends AsyncTaskLoader<List<MPermissionGroup>> {
 
     @Override
     protected void onStartLoading() {
-        super.onStartLoading();
+        if (mData != null) {
+            deliverResult(mData);
+        }
+
+        //TODO register some listen for data change event
+
+        if (takeContentChanged() || mData == null) {
+            // If the data has changed since the last time it was loaded
+            // or is not currently available, start a load.
+            forceLoad();
+        }
+
     }
 
     @Override
     protected void onStopLoading() {
-        super.onStopLoading();
+        cancelLoad();
     }
 
 
     @Override
-    protected boolean onCancelLoad() {
-        return super.onCancelLoad();
+    public void onCanceled(List<MPermissionGroup> data) {
+        super.onCanceled(data);
+        onReleaseResources(data);
+    }
+
+    /**
+     * Helper function to take care of releasing resources associated
+     * with an actively loaded data set.
+     */
+    protected void onReleaseResources(List<MPermissionGroup> data) {
+        // For a simple List<> there is nothing to do.  For something
+        // like a Cursor, we would close it here.
     }
 
     @Override
     protected void onReset() {
         super.onReset();
+
+
+        // Ensure the loader is stopped
+        onStopLoading();
+
+
+        if (mData != null) {
+            onReleaseResources(mData);
+            mData = null;
+        }
+
+        //TODO unregister the listen sensitive to data change event
+
+
     }
 
     @Override
-    protected void onForceLoad() {
-        super.onForceLoad();
+    public void deliverResult(List<MPermissionGroup> data) {
+        if (isReset()) {
+            if (data != null) {
+                onReleaseResources(data);
+            }
+        }
+
+        List<MPermissionGroup> oldData = mData;
+        mData = data;
+
+
+        if (isStarted()) {
+            super.deliverResult(data);
+        }
+
+        // At this point we can release the resources associated with
+        // 'oldApps' if needed; now that the new result is delivered we
+        // know that it is no longer in use.
+        if (oldData != null) {
+            onReleaseResources(oldData);
+        }
     }
 }
