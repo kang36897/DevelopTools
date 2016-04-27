@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
+import com.curious.tiger.R;
 import com.curious.tiger.data.MPermissionGroup;
 
 import java.util.List;
@@ -28,32 +29,32 @@ public class PermissionExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return 0;
+        return mPermissionGroups == null ? 0 : mPermissionGroups.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 0;
+        return mPermissionGroups.get(groupPosition).mPermissionList.size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return null;
+        return mPermissionGroups.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return null;
+        return mPermissionGroups.get(groupPosition).mPermissionList.get(childPosition);
     }
 
     @Override
     public long getGroupId(int groupPosition) {
-        return 0;
+        return groupPosition;
     }
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        return 0;
+        return groupPosition << 32 | childPosition;
     }
 
     @Override
@@ -63,11 +64,19 @@ public class PermissionExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        return null;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.component_permission_group, parent, false);
+        } else {
+
+        }
+
+
+        return convertView;
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
+                             View convertView, ViewGroup parent) {
         return null;
     }
 
@@ -77,5 +86,10 @@ public class PermissionExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public void swapData(List<MPermissionGroup> data) {
+        mPermissionGroups = data;
+        notifyDataSetChanged();
+
     }
+
+
 }
