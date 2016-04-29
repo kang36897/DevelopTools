@@ -35,8 +35,6 @@ public class PermissionFragment extends Fragment
 
         View contentView = inflater.inflate(R.layout.component_permission_in_group, container, false);
 
-        mGroupList = (ExpandableListView) container.findViewById(R.id.permission_group);
-
 
         return contentView;
     }
@@ -44,7 +42,7 @@ public class PermissionFragment extends Fragment
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        mGroupList = (ExpandableListView) getView().findViewById(R.id.permission_group);
         mAdapter = new PermissionExpandableListAdapter(getContext(), null);
         mGroupList.setAdapter(mAdapter);
         getLoaderManager().initLoader(LoaderConst.ID_AVAILABLE_PERMISSION, null, this);

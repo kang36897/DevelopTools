@@ -16,8 +16,6 @@
     <ImageView
         android:id="@+id/group_icon"
         android:src="@mipmap/ic_launcher"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
         grid:layout_column="0"
         grid:layout_gravity="center"
         grid:layout_rowSpan="2"/>

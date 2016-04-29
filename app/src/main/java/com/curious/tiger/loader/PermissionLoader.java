@@ -36,6 +36,7 @@ public class PermissionLoader extends AsyncTaskLoader<List<MPermissionGroup>> {
             MPermissionGroup group = new MPermissionGroup();
             group.mGroupInfo = info;
             //TODO assign a icon to indicate the usage of this group
+            group.extract(getContext());
 
             List<PermissionInfo> permissionInfoList = null;
             try {
@@ -53,7 +54,7 @@ public class PermissionLoader extends AsyncTaskLoader<List<MPermissionGroup>> {
                 MPermission p = new MPermission();
                 p.mPermissionInfo = pInfo;
                 //TODO assign a icon to indicate the protection level
-
+                p.extract(getContext());
 
                 group.mPermissionList.add(p);
             }

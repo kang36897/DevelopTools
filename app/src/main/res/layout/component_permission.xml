@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/permission_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/min_touch_size"
+    android:drawableLeft="@mipmap/ic_launcher"
+    android:drawablePadding="4dp"
+    android:gravity="center_vertical"
+    android:text="@string/example_permission_name"
+    android:textSize="14sp"
+    />

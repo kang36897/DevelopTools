@@ -10,4 +10,6 @@
     <string name="current_ip">Current IP : %1$s</string>
     <string name="case_wireless_debug">Wireless Debug</string>
     <string name="case_permission_on_device">Permission On Device</string>
+    <string name="example_group_name">android.permission.Camera</string>
+    <string name="example_permission_name">android.permission.WRITE_EXTERNAL_STORAGE</string>
 </resources>

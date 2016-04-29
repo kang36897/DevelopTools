@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.curious.tiger.R;
+import com.curious.tiger.data.MPermission;
 import com.curious.tiger.data.MPermissionGroup;
 
 import java.util.List;
@@ -64,11 +67,32 @@ public class PermissionExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        GroupViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.component_permission_group, parent, false);
-        } else {
+            holder = new GroupViewHolder();
+            convertView.setTag(holder);
 
+            holder.mGroupView = convertView;
+            holder.mIconView = (ImageView) convertView.findViewById(R.id.group_icon);
+            holder.mNameView = (TextView) convertView.findViewById(R.id.group_name);
+            holder.mDescriptionView = (TextView) convertView.findViewById(R.id.group_description);
+            holder.mExpandableIndicator = (ImageView) convertView.findViewById(R.id.expand_indicator);
+
+        } else {
+            holder = (GroupViewHolder) convertView.getTag();
         }
+
+        MPermissionGroup group = mPermissionGroups.get(groupPosition);
+
+        //TODO set group icon
+        if (group.mGroupIcon != null) {
+            holder.mIconView.setImageDrawable(group.mGroupIcon);
+        }
+        holder.mNameView.setText(group.getName());
+        holder.mDescriptionView.setText(group.getDescription());
+
+        //TODO set the expand indicator
 
 
         return convertView;
@@ -77,7 +101,27 @@ public class PermissionExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View convertView, ViewGroup parent) {
-        return null;
+        PermissionViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.component_permission, parent, false);
+            holder = new PermissionViewHolder();
+            convertView.setTag(holder);
+
+            holder.mItemView = convertView;
+            holder.mPermissionView = (TextView) convertView.findViewById(R.id.permission_item);
+
+        } else {
+            holder = (PermissionViewHolder) convertView.getTag();
+        }
+
+        MPermission permission = mPermissionGroups.get(groupPosition).mPermissionList.get(childPosition);
+
+        //TODO set the protect level icon
+
+        holder.mPermissionView.setText(permission.getName());
+
+
+        return convertView;
     }
 
     @Override
@@ -88,8 +132,24 @@ public class PermissionExpandableListAdapter extends BaseExpandableListAdapter {
     public void swapData(List<MPermissionGroup> data) {
         mPermissionGroups = data;
         notifyDataSetChanged();
-
     }
 
+
+    static class GroupViewHolder {
+        public View mGroupView;
+
+        public ImageView mIconView;
+        public TextView mNameView;
+        public TextView mDescriptionView;
+
+        public ImageView mExpandableIndicator;
+    }
+
+
+    static class PermissionViewHolder {
+        public View mItemView;
+
+        public TextView mPermissionView;
+    }
 
 }
