@@ -66,26 +66,28 @@ public class DeviceInfoActivity extends BaseActivity {
         mData.add(sb.toString());
         sb.delete(0, sb.length());
 
-        sb.append("Back-camera-orientation:")
-                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].orientation);
-        mData.add(sb.toString());
-        sb.delete(0, sb.length());
+        if (CameraOnDevice.CAMERA_INFOS.length > 0) {
+            sb.append("Back-camera-orientation:")
+                    .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].orientation);
+            mData.add(sb.toString());
+            sb.delete(0, sb.length());
 
-        sb.append("Back-camera-canDisableShutterSound:")
-                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].canDisableShutterSound);
-        mData.add(sb.toString());
-        sb.delete(0, sb.length());
+            sb.append("Back-camera-canDisableShutterSound:")
+                    .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.BACK_CAMERA_ID].canDisableShutterSound);
+            mData.add(sb.toString());
+            sb.delete(0, sb.length());
 
-        sb.append("Front-camera-orientation:")
-                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].orientation);
-        mData.add(sb.toString());
-        sb.delete(0, sb.length());
+            sb.append("Front-camera-orientation:")
+                    .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].orientation);
+            mData.add(sb.toString());
+            sb.delete(0, sb.length());
 
-        sb.append("Front-camera-canDisableShutterSound:")
-                .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].canDisableShutterSound);
-        mData.add(sb.toString());
-        sb.delete(0, sb.length());
+            sb.append("Front-camera-canDisableShutterSound:")
+                    .append(CameraOnDevice.CAMERA_INFOS[CameraOnDevice.FRONT_CAMERA_ID].canDisableShutterSound);
+            mData.add(sb.toString());
+            sb.delete(0, sb.length());
 
+        }
         mListView.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, mData));
 
     }
