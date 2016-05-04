@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    grid:alignmentMode="alignBounds"
+    grid:columnCount="2"
+    grid:useDefaultMargins="true"
+    >
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_name"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/GridItem.Detail"
+        android:text="@string/example_group_name"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_vendor"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/vendor"
+        style="@style/GridItem.Detail"
+        android:text="@string/example_permission_name"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_version"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/version"
+        style="@style/GridItem.Detail"
+        android:text="1.0"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_type"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/type"
+        style="@style/GridItem.Detail"
+        android:text="1.0"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_max_range"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/max_range"
+        style="@style/GridItem.Detail"
+        android:text="1.0"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_resolution"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/resolution"
+        style="@style/GridItem.Detail"
+        android:text="1.0"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_power"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/power"
+        style="@style/GridItem.Detail"
+        android:text="1.0"
+        grid:layout_gravity="left|center_vertical"
+        />
+
+    <TextView
+        style="@style/GridItem.Label"
+        android:text="@string/label_sensor_min_delay"
+        grid:layout_gravity="right|center_vertical"/>
+
+    <TextView
+        android:id="@+id/min_delay"
+        style="@style/GridItem.Detail"
+        android:text="1.0"
+        grid:layout_gravity="left|center_vertical"
+        />
+</android.support.v7.widget.GridLayout>

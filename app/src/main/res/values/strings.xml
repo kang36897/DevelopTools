@@ -12,4 +12,12 @@
     <string name="case_permission_on_device">Permission On Device</string>
     <string name="example_group_name">android.permission.Camera</string>
     <string name="example_permission_name">android.permission.WRITE_EXTERNAL_STORAGE</string>
+    <string name="label_sensor_name">Sensor name</string>
+    <string name="label_sensor_vendor">Vendor</string>
+    <string name="label_sensor_version">Version</string>
+    <string name="label_sensor_type">Type</string>
+    <string name="label_sensor_max_range">MaxRange</string>
+    <string name="label_sensor_resolution">Resolution</string>
+    <string name="label_sensor_power">Power</string>
+    <string name="label_sensor_min_delay">MinDelay</string>
 </resources>
